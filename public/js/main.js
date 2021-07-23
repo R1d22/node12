@@ -2,14 +2,15 @@ const formEl = document.querySelector('.planets');
 
 formEl.addEventListener('submit', async (ev) => {
     ev.preventDefault();
-
-    const formData = new FormData(ev.target);
+    // console.log('ev:', ev.target)
+    const formData = new FormData(formEl);
     const getId = formData.get('planet');
-    console.log(getId);
+    //console.log(getId);
 
-    //const url = `https://swapi.dev/api/planets/${getId}`;
-    const result = await axios.post('/id', getId);
+    const url = `https://swapi.dev/api/planets/${getId}`;
+    const result = await axios.get(url);
     console.log(result.data.name);
+    
 });
 
 
